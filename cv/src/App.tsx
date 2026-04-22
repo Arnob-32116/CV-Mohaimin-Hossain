@@ -1,6 +1,5 @@
-import { Routes, Route, Link } from "react-router-dom";
 import NavBar from "./components/Navbar";
-import About from "./components/About";
+
 import SideBar from "./components/SideBar";
 import PdfOpener from "./components/PdfOpener";
 import BasicCards from "./components/BasicCards";
