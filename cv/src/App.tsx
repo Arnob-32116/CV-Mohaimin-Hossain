@@ -7,6 +7,7 @@ import BasicCards from "./components/BasicCards";
 import EducationCard from "./components/EducationCard";
 import Experience from "./components/ExperienceCard";
 import Skills from "./components/SkillsCard";
+import Achievment from "./components/AchievmentsCard";
 
 export default function App() {
   return (
@@ -52,17 +53,16 @@ export default function App() {
                   <section id="skills" className="observe-card">
                     <Skills></Skills>
                   </section>
+
+                  <section id="achievements" className="observe-card">
+                    <Achievment></Achievment>
+                  </section>
                 </div>
               </main>
             </div>
           </div>
         </div>
       </div>
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<NavBar />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
     </>
   );
 }
