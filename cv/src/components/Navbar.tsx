@@ -1,47 +1,67 @@
 import { Link } from "react-router-dom";
+import { useTheme } from "../App";
 import "../App.css";
 
 function NavBar() {
+  const { theme, toggle } = useTheme();
+
   return (
-    <nav className="fixed w-full border-b border-black bg-gray-950/80 backdrop-blur">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="navbar">
+      <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0.9rem 1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+
         {/* Logo */}
-        <h1 className="text-sm pr-5 md:text-xl text-white tracking-wide sm:font-light text md:font-bold ">
-          Mohaimin Hossain
+        <h1 style={{
+          fontFamily: "'DM Mono', monospace",
+          fontSize: "clamp(0.7rem, 2vw, 0.9rem)",
+          color: "var(--text-primary)",
+          letterSpacing: "0.08em",
+          fontWeight: 400,
+        }}>
+          MOHAIMIN HOSSAIN
         </h1>
 
-        {/* Menu */}
-        <ul className="flex text-sm gap-4 md:gap-8  md:text-xl">
-          <li>
-            <Link to="/" className="hover:text-blue-400 text-white transition">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/about"
-              className="hover:text-blue-400 text-white transition"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/projects"
-              className="hover:text-blue-400 text-white transition"
-            >
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className="hover:text-blue-400 text-white transition"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
+        {/* Right: Nav links + toggle */}
+        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <ul style={{ display: "flex", gap: "clamp(1rem, 3vw, 2rem)", listStyle: "none", margin: 0, padding: 0 }}>
+            {[
+              { to: "/",        label: "Home"     },
+              { to: "/about",   label: "About"    },
+              { to: "/projects",label: "Projects" },
+              { to: "/contact", label: "Contact"  },
+            ].map(({ to, label }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--text-secondary)",
+                    textDecoration: "none",
+                    textTransform: "uppercase",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "var(--text-secondary)")}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Theme Toggle */}
+          <button
+            className="theme-toggle"
+            onClick={toggle}
+            aria-label="Toggle theme"
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <div className="theme-toggle-knob">
+              {theme === "dark" ? "☽" : "☀"}
+            </div>
+          </button>
+        </div>
       </div>
     </nav>
   );
