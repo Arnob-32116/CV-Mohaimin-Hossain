@@ -7,7 +7,9 @@ function Achievment() {
     // The Card Container: Added a dark background, rounded corners, and a subtle border
     <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8  shadow-lg mt-6">
       {/* Optional: A clean header for the card */}
-      <h2 className="text-2xl font-bold text-amber-50 mb-6 border-b border-gray-800 pb-4"></h2>
+      <h2 className="text-2xl font-bold text-amber-50 mb-6 border-b border-gray-800 pb-4">
+        Achievments
+      </h2>
 
       {/* The Content Wrapper: flex-col with gap-6 creates perfect vertical spacing */}
 
