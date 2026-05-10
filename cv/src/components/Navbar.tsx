@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../App";
+import { useTheme } from "./Layout";
 import "../App.css";
 
 function NavBar() {

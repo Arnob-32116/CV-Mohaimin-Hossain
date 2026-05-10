@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 
-interface MenuItem { id: string; label: string; }
+interface MenuItem {
+  id: string;
+  label: string;
+}
 
 const menuItems: MenuItem[] = [
-  { id: "basic",        label: "Basics"       },
-  { id: "education",    label: "Education"    },
-  { id: "exp",          label: "Experience"   },
-  { id: "skills",       label: "Skills"       },
+  { id: "basic", label: "Basics" },
+  { id: "education", label: "Education" },
+  { id: "exp", label: "Experience" },
+  { id: "skills", label: "Skills" },
   { id: "achievements", label: "Achievements" },
 ];
 
@@ -17,16 +20,24 @@ function SideBar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => { ratiosRef.current[e.target.id] = e.intersectionRatio; });
-        let maxRatio = 0, bestId = "";
+        entries.forEach((e) => {
+          ratiosRef.current[e.target.id] = e.intersectionRatio;
+        });
+        let maxRatio = 0,
+          bestId = "";
         for (const [id, ratio] of Object.entries(ratiosRef.current)) {
-          if (ratio > maxRatio) { maxRatio = ratio; bestId = id; }
+          if (ratio > maxRatio) {
+            maxRatio = ratio;
+            bestId = id;
+          }
         }
         if (bestId && maxRatio > 0) setActiveId(bestId);
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0] }
+      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0] },
     );
-    document.querySelectorAll(".observe-card").forEach((c) => observer.observe(c));
+    document
+      .querySelectorAll(".observe-card")
+      .forEach((c) => observer.observe(c));
     return () => observer.disconnect();
   }, []);
 
@@ -54,19 +65,30 @@ function SideBar() {
 
       <div style={{ padding: "0 0.75rem", overflowY: "auto", height: "100%" }}>
         {/* Section label */}
-        <p style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: "0.6rem",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-          marginBottom: "0.75rem",
-          paddingLeft: "0.6rem",
-        }}>
+        <p
+          style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: "0.6rem",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+            marginBottom: "0.75rem",
+            paddingLeft: "0.6rem",
+          }}
+        >
           Contents
         </p>
 
-        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
+        <ul
+          style={{
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "2px",
+          }}
+        >
           {menuItems.map((item) => (
             <li key={item.id}>
               <button
@@ -104,16 +126,24 @@ function SideBarFinal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => { ratiosRef.current[e.target.id] = e.intersectionRatio; });
-        let maxRatio = 0, bestId = "";
+        entries.forEach((e) => {
+          ratiosRef.current[e.target.id] = e.intersectionRatio;
+        });
+        let maxRatio = 0,
+          bestId = "";
         for (const [id, ratio] of Object.entries(ratiosRef.current)) {
-          if (ratio > maxRatio) { maxRatio = ratio; bestId = id; }
+          if (ratio > maxRatio) {
+            maxRatio = ratio;
+            bestId = id;
+          }
         }
         if (bestId && maxRatio > 0) setActiveId(bestId);
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0] }
+      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0] },
     );
-    document.querySelectorAll(".observe-card").forEach((c) => observer.observe(c));
+    document
+      .querySelectorAll(".observe-card")
+      .forEach((c) => observer.observe(c));
     return () => observer.disconnect();
   }, []);
 
@@ -143,19 +173,30 @@ function SideBarFinal() {
           transition: "transform 0.3s ease, background 0.4s ease",
         }}
       >
-        <div style={{ padding: "0 0.75rem", overflowY: "auto", height: "100%" }}>
-          <p style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: "0.6rem",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            marginBottom: "0.75rem",
-            paddingLeft: "0.6rem",
-          }}>
-            Contents
-          </p>
-          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
+        <div
+          style={{ padding: "0 0.75rem", overflowY: "auto", height: "100%" }}
+        >
+          <p
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "0.6rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--text-muted)",
+              marginBottom: "0.75rem",
+              paddingLeft: "0.6rem",
+            }}
+          ></p>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+            }}
+          >
             {menuItems.map((item) => (
               <li key={item.id}>
                 <button
